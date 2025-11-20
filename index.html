@@ -1,1 +1,875 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Israel Adekanmi - Full Stack Developer</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4A90E2',secondary:'#2D3748'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+scroll-behavior: smooth;
+}
+.timeline-item:nth-child(even) .timeline-content {
+margin-left: auto;
+}
+.timeline-item:nth-child(odd) .timeline-dot {
+right: -8px;
+}
+.timeline-item:nth-child(even) .timeline-dot {
+left: -8px;
+}
+@media (max-width: 768px) {
+.timeline-item .timeline-content {
+margin-left: 2rem !important;
+width: calc(100% - 2rem) !important;
+}
+.timeline-item .timeline-dot {
+left: -8px !important;
+}
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #4A90E2;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #4A90E2;
+}
+.custom-checkbox:checked:after {
+content: '';
+position: absolute;
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 48px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 24px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .switch-slider {
+background-color: #4A90E2;
+}
+input:checked + .switch-slider:before {
+transform: translateX(24px);
+}
+.custom-range {
+-webkit-appearance: none;
+width: 100%;
+height: 6px;
+background: #e2e8f0;
+border-radius: 5px;
+outline: none;
+}
+.custom-range::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+background: #4A90E2;
+border-radius: 50%;
+cursor: pointer;
+}
+.custom-range::-moz-range-thumb {
+width: 18px;
+height: 18px;
+background: #4A90E2;
+border-radius: 50%;
+cursor: pointer;
+border: none;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- Navigation -->
+<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+<a href="#" class="text-xl font-bold text-primary">Israel Adekanmi</a>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex space-x-8">
+<a href="#home" class="text-secondary hover:text-primary transition-colors">Home</a>
+<a href="#about" class="text-secondary hover:text-primary transition-colors">About</a>
+<a href="#skills" class="text-secondary hover:text-primary transition-colors">Skills</a>
+<a href="#projects" class="text-secondary hover:text-primary transition-colors">Projects</a>
+<a href="#experience" class="text-secondary hover:text-primary transition-colors">Experience</a>
+<a href="#education" class="text-secondary hover:text-primary transition-colors">Education</a>
+</div>
+<!-- Mobile Navigation Toggle -->
+<div class="md:hidden">
+<button id="menu-toggle" class="w-10 h-10 flex items-center justify-center text-secondary">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+<div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+<a href="#home" class="py-2 text-secondary hover:text-primary transition-colors">Home</a>
+<a href="#about" class="py-2 text-secondary hover:text-primary transition-colors">About</a>
+<a href="#skills" class="py-2 text-secondary hover:text-primary transition-colors">Skills</a>
+<a href="#projects" class="py-2 text-secondary hover:text-primary transition-colors">Projects</a>
+<a href="#experience" class="py-2 text-secondary hover:text-primary transition-colors">Experience</a>
+<a href="#education" class="py-2 text-secondary hover:text-primary transition-colors">Education</a>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section id="home" class="pt-24 md:pt-0 min-h-screen flex items-center relative" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20minimalist%20tech%20background%20with%20soft%20blue%20gradient%2C%20abstract%20geometric%20shapes%2C%20clean%20and%20professional%20atmosphere%2C%20perfect%20for%20developer%20portfolio%2C%20high%20quality%20digital%20art&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+<div class="container mx-auto px-4 py-16 relative z-10">
+<div class="max-w-3xl">
+<h1 class="text-4xl md:text-6xl font-bold text-secondary mb-4">Israel Adekanmi</h1>
+<h2 class="text-2xl md:text-3xl font-medium text-primary mb-8">Full Stack Developer</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+<a href="mailto:adekanmiisrael8@gmail.com" class="text-secondary hover:text-primary transition-colors">adekanmiisrael8@gmail.com</a>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<a href="tel:+2348029737682" class="text-secondary hover:text-primary transition-colors">+234 8029737682</a>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-github-line ri-lg"></i>
+</div>
+<a href="https://github.com/Israel-Adekanmi" target="_blank" class="text-secondary hover:text-primary transition-colors">github.com/Israel-Adekanmi</a>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-linkedin-line ri-lg"></i>
+</div>
+<a href="https://linkedin.com/in/adekanmi-israel-49b4b1329" target="_blank" class="text-secondary hover:text-primary transition-colors">linkedin.com/in/adekanmi-israel-49b4b1329</a>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white py-3 px-6 rounded-button flex items-center transition-colors whitespace-nowrap">
+<i class="ri-download-line ri-lg mr-2"></i>
+Download Resume
+</button>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section id="about" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center text-secondary mb-12">About Me</h2>
+<div class="flex flex-col md:flex-row items-center gap-10">
+<div class="w-full md:w-1/3 flex justify-center">
+<div class="w-64 h-64 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg" style="background-image: url('https://res.cloudinary.com/craftshop/image/upload/v1751184832/20241220_173254_d2yzkv.jpg'); background-size: cover; background-position: center;"></div>
+</div>
+<div class="w-full md:w-2/3">
+<div class="bg-gray-50 p-8 rounded-lg border border-gray-100 shadow-sm">
+<p class="text-lg text-gray-700 leading-relaxed">
+I am a highly motivated Full Stack Developer with hands-on experience in building scalable and efficient web applications. Proficient in modern languages and tools including Python, JavaScript, TypeScript, and various frameworks like React.js, Node.js, NestJS and Next.js.
+</p>
+<p class="text-lg text-gray-700 leading-relaxed mt-4">
+My technical expertise spans across frontend and backend development, database management, and cloud services. I excel in creating responsive, user-friendly interfaces while ensuring robust backend systems.
+</p>
+<p class="text-lg text-gray-700 leading-relaxed mt-4">
+Strong in teamwork, problem-solving, and leadership, I thrive in collaborative environments and am passionate about delivering high-quality solutions that meet business objectives.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section id="skills" class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center text-secondary mb-12">Skills & Expertise</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Languages -->
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-4">
+<i class="ri-code-s-slash-line ri-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary">Languages</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Python</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">JavaScript</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">TypeScript</span>
+</div>
+</div>
+<!-- Frameworks -->
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-4">
+<i class="ri-layout-grid-line ri-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary">Frameworks</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React.js</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Node.js</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Express.js</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Next.js</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">NestJs</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">ShadCN</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Redux</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Jest</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Cypress</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">TailwindCSS</span>
+</div>
+</div>
+<!-- Tools -->
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-4">
+<i class="ri-tools-line ri-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary">Tools</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Git</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Docker</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">TravisCI</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">VS Code</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">PyCharm</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Visual Studio</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Kubernetes</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Jira</span>
+</div>
+</div>
+<!-- Databases -->
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-4">
+<i class="ri-database-2-line ri-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary">Databases</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Redis</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MySQL</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">PostgreSQL</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Firebase</span>
+</div>
+</div>
+<!-- Cloud -->
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-4">
+<i class="ri-cloud-line ri-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary">Cloud</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">AWS</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Azure</span>
+</div>
+</div>
+<!-- Others -->
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-4">
+<i class="ri-more-line ri-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary">Others</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">REST APIs</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">GraphQL</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Figma</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Accessibility</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">UI/UX</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">SEO</span>
+</div>
+</div>
+</div>
+<!-- Skill Level Section -->
+<div class="mt-16 bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-xl font-semibold text-secondary mb-6">Proficiency Levels</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700">Frontend Development</span>
+<span class="text-primary font-medium">90%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700">Backend Development</span>
+<span class="text-primary font-medium">85%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700">Database Management</span>
+<span class="text-primary font-medium">80%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 80%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700">DevOps & Cloud</span>
+<span class="text-primary font-medium">75%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 75%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center text-secondary mb-12">Featured Projects</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Project 1 -->
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="h-64 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=university%20campus%20map%20application%20interface%20with%20navigation%20paths%20highlighted%2C%20modern%20UI%20design%2C%20clean%20layout%20with%20blue%20accents%2C%20digital%20map%20visualization%2C%20professional%20software%20interface&width=800&height=500&seq=project1&orientation=landscape'); background-size: cover; background-position: center;"></div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-secondary mb-2">Unilag Campus Explorer</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs">React</span>
+<span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs">TypeScript</span>
+<span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs">TailwindCSS</span>
+<span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs">Dijkstra's Algorithm</span>
+</div>
+<p class="text-gray-700 mb-6">
+An interactive campus map application that helps students and visitors navigate the University of Lagos campus efficiently. Implements Dijkstra's algorithm for finding the shortest path between campus locations.
+</p>
+<div class="flex space-x-3">
+<a href="https://unilag-campus-explorer.vercel.app" target="_blank" class="bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded-button flex items-center transition-colors whitespace-nowrap">
+<i class="ri-external-link-line ri-lg mr-2"></i>
+Live Demo
+</a>
+<a href="#" class="bg-secondary hover:bg-secondary/90 text-white py-2 px-4 rounded-button flex items-center transition-colors whitespace-nowrap">
+<i class="ri-github-line ri-lg mr-2"></i>
+Source Code
+</a>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="h-64 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=movie%20watchlist%20application%20interface%20with%20film%20posters%20arranged%20in%20a%20grid%2C%20search%20functionality%2C%20genre%20filtering%20options%2C%20modern%20dark%20UI%20with%20blue%20accents%2C%20professional%20software%20interface&width=800&height=500&seq=project2&orientation=landscape'); background-size: cover; background-position: center;"></div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-secondary mb-2">Movie Watchlist</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs">React</span>
+<span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs">TypeScript</span>
+<span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs">NestJS</span>
+<span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs">MongoDB</span>
+</div>
+<p class="text-gray-700 mb-6">
+A full-stack application that allows users to create personalized movie watchlists. Features include adding movies, searching by title, exploring by genre, and tracking watched status. Implements a responsive UI with dark mode support.
+</p>
+<div class="flex space-x-3">
+<!-- <a href="#" class="bg-secondary/80 text-white py-2 px-4 rounded-button flex items-center transition-colors cursor-not-allowed whitespace-nowrap"> -->
+<a href="https://izzy-movie-watchlist.onrender.com" target="_blank" class="bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded-button flex items-center transition-colors whitespace-nowrap">
+<i class="ri-external-link-line ri-lg mr-2"></i>
+Live Demo
+</a>
+<a href="#" class="bg-secondary hover:bg-secondary/90 text-white py-2 px-4 rounded-button flex items-center transition-colors whitespace-nowrap">
+<i class="ri-github-line ri-lg mr-2"></i>
+Source Code
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section id="experience" class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center text-secondary mb-12">Professional Experience</h2>
+<div class="relative">
+<!-- Timeline Line -->
+<div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 transform -translate-x-1/2"></div>
+<!-- Timeline Items -->
+<div class="space-y-12">
+<!-- Experience 1 -->
+<div class="timeline-item relative">
+<div class="timeline-dot absolute w-4 h-4 bg-primary rounded-full z-10"></div>
+<div class="timeline-content md:w-5/12 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+<i class="ri-building-line ri-xl text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-secondary">Backend Developer</h3>
+<p class="text-primary">BJTM Technologies</p>
+</div>
+</div>
+<p class="text-gray-500 mb-3">Nov 2024 – June 2025</p>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li>Developing and maintaining RESTful APIs using Node.js and Express</li>
+<li>Implementing database solutions with MongoDB and PostgreSQL</li>
+<li>Collaborating with frontend developers to integrate API endpoints</li>
+<li>Optimizing application performance and ensuring security best practices</li>
+</ul>
+</div>
+</div>
+<!-- Experience 2 -->
+<div class="timeline-item relative">
+<div class="timeline-dot absolute w-4 h-4 bg-primary rounded-full z-10"></div>
+<div class="timeline-content md:w-5/12 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+<i class="ri-code-box-line ri-xl text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-secondary">Software Engineer Intern</h3>
+<p class="text-primary">Nithub</p>
+</div>
+</div>
+<p class="text-gray-500 mb-3">Apr 2024 – Nov 2024</p>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li>Assisted in developing web applications using React.js and Next.js</li>
+<li>Implemented responsive UI components following design specifications</li>
+<li>Participated in code reviews and agile development processes</li>
+<li>Collaborated with senior developers on feature implementation</li>
+</ul>
+</div>
+</div>
+<!-- Experience 3 -->
+<div class="timeline-item relative">
+<div class="timeline-dot absolute w-4 h-4 bg-primary rounded-full z-10"></div>
+<div class="timeline-content md:w-5/12 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+<i class="ri-terminal-box-line ri-xl text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-secondary">Junior Developer</h3>
+<p class="text-primary">TradeLenda</p>
+</div>
+</div>
+<p class="text-gray-500 mb-3">Aug 2023 – Nov 2023</p>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li>Developed frontend components using React and TailwindCSS</li>
+<li>Implemented API integrations for financial data services</li>
+<li>Fixed bugs and improved application performance</li>
+<li>Participated in daily stand-ups and sprint planning</li>
+</ul>
+</div>
+</div>
+<!-- Experience 4 -->
+<div class="timeline-item relative">
+<div class="timeline-dot absolute w-4 h-4 bg-primary rounded-full z-10"></div>
+<div class="timeline-content md:w-5/12 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+<i class="ri-bank-line ri-xl text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-secondary">Intern</h3>
+<p class="text-primary">Stanbic IBTC</p>
+</div>
+</div>
+<p class="text-gray-500 mb-3">Oct 2022 – Nov 2022</p>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li>Assisted in IT operations and support tasks</li>
+<li>Gained exposure to financial software systems</li>
+<li>Participated in documentation and process improvement</li>
+<li>Collaborated with IT team on system maintenance</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Education Section -->
+<section id="education" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center text-secondary mb-12">Education</h2>
+<div class="max-w-3xl mx-auto">
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm border border-gray-100">
+<div class="h-48 bg-primary/10 flex items-center justify-center" style="background-image: url('https://readdy.ai/api/search-image?query=university%20of%20lagos%20campus%20aerial%20view%2C%20beautiful%20academic%20buildings%2C%20modern%20university%20architecture%2C%20professional%20photograph%20with%20blue%20sky&width=1000&height=400&seq=education1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="bg-white/90 px-6 py-4 rounded-lg">
+<img src="https://readdy.ai/api/search-image?query=university%20of%20lagos%20logo%2C%20simple%20emblem%2C%20educational%20institution%20symbol%2C%20professional%20design&width=120&height=120&seq=logo1&orientation=squarish" alt="University of Lagos" class="h-16 mx-auto">
+</div>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-semibold text-secondary mb-2">University of Lagos</h3>
+<p class="text-lg text-primary mb-4">B.Sc. Mechanical Engineering</p>
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-calendar-line ri-lg"></i>
+</div>
+<span class="text-gray-700">2021 - 2027</span>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-medal-line ri-lg"></i>
+</div>
+<span class="text-gray-700">CGPA: 4.83/5.0</span>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg border border-gray-100">
+<h4 class="font-semibold text-secondary mb-3">Key Achievements</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li>Currently on First Class</li>
+<!-- <li>Best Student in Engineering Mathematics</li> -->
+<li>Member of the Engineering Students Association</li>
+<li>Completed capstone project on renewable energy systems</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Additional Certifications -->
+<div class="mt-10">
+<h3 class="text-xl font-semibold text-secondary mb-6">Professional Certifications</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-award-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-semibold text-secondary">AWS Certified Developer</h4>
+<p class="text-gray-700 text-sm">Amazon Web Services, 2024</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-award-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-semibold text-secondary">React Developer Certification</h4>
+<p class="text-gray-700 text-sm">Meta, 2023</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-award-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-semibold text-secondary">MongoDB Database Administrator</h4>
+<p class="text-gray-700 text-sm">MongoDB University, 2023</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-3">
+<i class="ri-award-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-semibold text-secondary">Full Stack Web Development</h4>
+<p class="text-gray-700 text-sm">Udacity, 2022</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center text-secondary mb-12">Get In Touch</h2>
+<div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-8">
+<div class="w-full md:w-1/2">
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 h-full">
+<h3 class="text-xl font-semibold text-secondary mb-6">Contact Information</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-4 mt-1">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-secondary">Email</h4>
+<a href="mailto:adekanmiisrael8@gmail.com" class="text-gray-700 hover:text-primary transition-colors">adekanmiisrael8@gmail.com</a>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-4 mt-1">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-secondary">Phone</h4>
+<a href="tel:+2348029737682" class="text-gray-700 hover:text-primary transition-colors">+234 8029737682</a>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-full mr-4 mt-1">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-secondary">Location</h4>
+<p class="text-gray-700">Lagos, Nigeria</p>
+</div>
+</div>
+<div class="pt-4">
+<h4 class="font-medium text-secondary mb-3">Social Profiles</h4>
+<div class="flex space-x-4">
+<a href="https://github.com/Israel-Adekanmi" target="_blank" class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary bg-gray-100 hover:bg-primary/10 rounded-full transition-colors">
+<i class="ri-github-line ri-lg"></i>
+</a>
+<a href="https://linkedin.com/in/adekanmi-israel-49b4b1329" target="_blank" class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary bg-gray-100 hover:bg-primary/10 rounded-full transition-colors">
+<i class="ri-linkedin-line ri-lg"></i>
+</a>
+<a href="#" target="_blank" class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary bg-gray-100 hover:bg-primary/10 rounded-full transition-colors">
+<i class="ri-twitter-x-line ri-lg"></i>
+</a>
+<a href="#" target="_blank" class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary bg-gray-100 hover:bg-primary/10 rounded-full transition-colors">
+<i class="ri-instagram-line ri-lg"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2">
+<form class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-xl font-semibold text-secondary mb-6">Send Me a Message</h3>
+<div class="space-y-4">
+<div>
+<label for="name" class="block text-gray-700 mb-2">Name</label>
+<input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Your name">
+</div>
+<div>
+<label for="email" class="block text-gray-700 mb-2">Email</label>
+<input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Your email">
+</div>
+<div>
+<label for="subject" class="block text-gray-700 mb-2">Subject</label>
+<input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Subject">
+</div>
+<div>
+<label for="message" class="block text-gray-700 mb-2">Message</label>
+<textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Your message"></textarea>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="consent" class="custom-checkbox mr-3">
+<label for="consent" class="text-gray-700 text-sm">I agree to be contacted regarding my message</label>
+</div>
+<button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white py-3 px-6 rounded-button flex items-center justify-center transition-colors whitespace-nowrap">
+<i class="ri-send-plane-line ri-lg mr-2"></i>
+Send Message
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-secondary text-white py-12">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div class="mb-6 md:mb-0">
+<h2 class="text-2xl font-bold mb-2">Israel Adekanmi</h2>
+<p class="text-gray-300">Full Stack Developer</p>
+</div>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-300 hover:text-white transition-colors">Home</a>
+<a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+<a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a>
+<a href="#projects" class="text-gray-300 hover:text-white transition-colors">Projects</a>
+<a href="#experience" class="text-gray-300 hover:text-white transition-colors">Experience</a>
+</div>
+</div>
+<hr class="border-gray-700 my-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 mb-4 md:mb-0">© 2025 Israel Adekanmi. All rights reserved.</p>
+<div class="flex space-x-4">
+<a href="https://github.com/Israel-Adekanmi" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+<i class="ri-github-line ri-lg"></i>
+</a>
+<a href="https://linkedin.com/in/adekanmi-israel-49b4b1329" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+<i class="ri-linkedin-line ri-lg"></i>
+</a>
+<a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+<i class="ri-twitter-x-line ri-lg"></i>
+</a>
+<a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+<i class="ri-instagram-line ri-lg"></i>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Mobile Menu Toggle Script -->
+<script id="mobile-menu-script">
+document.addEventListener('DOMContentLoaded', function() {
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+menuToggle.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+// Close mobile menu when clicking on a link
+const mobileLinks = mobileMenu.querySelectorAll('a');
+mobileLinks.forEach(link => {
+link.addEventListener('click', function() {
+mobileMenu.classList.add('hidden');
+});
+});
+});
+</script>
+<!-- Smooth Scroll Script -->
+<script id="smooth-scroll-script">
+document.addEventListener('DOMContentLoaded', function() {
+const links = document.querySelectorAll('a[href^="#"]');
+links.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+const headerOffset = 80;
+const elementPosition = targetElement.getBoundingClientRect().top;
+const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+window.scrollTo({
+top: offsetPosition,
+behavior: 'smooth'
+});
+}
+});
+});
+});
+</script>
+<!-- Form Validation Script -->
+<script id="form-validation-script">
+document.addEventListener('DOMContentLoaded', function() {
+const contactForm = document.querySelector('#contact form');
+if (contactForm) {
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const subjectInput = document.getElementById('subject');
+const messageInput = document.getElementById('message');
+const consentCheckbox = document.getElementById('consent');
+let isValid = true;
+// Simple validation
+if (!nameInput.value.trim()) {
+nameInput.classList.add('border-red-500');
+isValid = false;
+} else {
+nameInput.classList.remove('border-red-500');
+}
+if (!emailInput.value.trim() || !emailInput.value.includes('@')) {
+emailInput.classList.add('border-red-500');
+isValid = false;
+} else {
+emailInput.classList.remove('border-red-500');
+}
+if (!subjectInput.value.trim()) {
+subjectInput.classList.add('border-red-500');
+isValid = false;
+} else {
+subjectInput.classList.remove('border-red-500');
+}
+if (!messageInput.value.trim()) {
+messageInput.classList.add('border-red-500');
+isValid = false;
+} else {
+messageInput.classList.remove('border-red-500');
+}
+if (!consentCheckbox.checked) {
+consentCheckbox.classList.add('border-red-500');
+isValid = false;
+} else {
+consentCheckbox.classList.remove('border-red-500');
+}
+if (isValid) {
+// Form submission logic would go here
+alert('Message sent successfully! I will get back to you soon.');
+contactForm.reset();
+}
+});
+}
+});
+</script>
+<!-- Active Navigation Highlight Script -->
+<script id="active-nav-script">
+document.addEventListener('DOMContentLoaded', function() {
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('header nav a');
+function highlightNavigation() {
+const scrollPosition = window.scrollY + 100;
+sections.forEach(section => {
+const sectionTop = section.offsetTop;
+const sectionHeight = section.offsetHeight;
+const sectionId = section.getAttribute('id');
+if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+navLinks.forEach(link => {
+link.classList.remove('text-primary', 'font-medium');
+if (link.getAttribute('href') === '#' + sectionId) {
+link.classList.add('text-primary', 'font-medium');
+}
+});
+}
+});
+}
+window.addEventListener('scroll', highlightNavigation);
+highlightNavigation();
+});
+</script>
+</body>
+</html>

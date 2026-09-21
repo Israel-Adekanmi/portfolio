@@ -61,7 +61,7 @@ export default function Projects() {
                   ))}
                 </div>
                 <p className="text-gray-700 mb-6">{project.description}</p>
-                <div className="flex space-x-3">
+                <div className="flex flex-wrap gap-3">
                   <a
                     href={project.demoUrl}
                     target="_blank"
@@ -80,6 +80,17 @@ export default function Projects() {
                     <i className="ri-github-line ri-lg mr-2" />
                     Source Code
                   </a>
+                  {project.swaggerUrl && (
+                    <a
+                      href={project.swaggerUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded-button flex items-center transition-colors whitespace-nowrap"
+                    >
+                      <i className="ri-file-list-3-line ri-lg mr-2" />
+                      API Docs
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

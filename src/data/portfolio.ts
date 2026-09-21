@@ -160,7 +160,7 @@ export const projects: Project[] = [
       "A full-stack task management application with user authentication, task creation and editing, status tracking, overdue task detection, and a responsive dashboard. Built with a NestJS REST API and MongoDB backend.",
     demoUrl: "https://taskflowfrontend-ten.vercel.app/",
     sourceUrl: "https://github.com/Israel-Adekanmi/taskflow",
-    swaggerUrl: "https://taskflow-backend-vqny.onrender.com/docs", // TODO: add your real Swagger URL
+    swaggerUrl: "https://taskflow-backend-vqny.onrender.com/api/docs", // TODO: add your real Swagger URL
   },
 ];
 
